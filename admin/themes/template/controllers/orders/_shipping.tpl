@@ -90,4 +90,40 @@
 			{/foreach}
 		</tbody>
 	</table>
+	{* Start - By CoolTronic.dk - Cool Pakkelabel *}
+    {if isset($pa_shipping_cart) && $pa_shipping_cart}
+        {if $pa_shipping_cart.type_shipping=='pdk'}
+            <h3 style="padding: 20px; border: medium none;">{l s='PostNord Udleveringssted' mod='coolpakkelabel'}</h3>
+        {/if}
+        {if $pa_shipping_cart.type_shipping=='gls'}
+            <h3 style="padding: 20px; border: medium none;">{l s='GLS Udleveringssted' mod='coolpakkelabel'}</h3>
+        {/if}
+        <table class="table">
+    		<thead>
+    			<tr>
+    				<th class="item" data-sort-ignore="true">{l s='Droppoint ID' mod='coolpakkelabel'}</th>
+    				<th data-sort-ignore="true" class="item">{l s='Firma navn' mod='coolpakkelabel'}</th>
+    				<th data-sort-ignore="true" class="item">{l s='Adresse' mod='coolpakkelabel'}</th>
+                    {if $pa_shipping_cart.type_shipping=='gls'}
+                        <th data-sort-ignore="true" class="item">{l s='Adresse 2' mod='coolpakkelabel'}</th>
+                    {/if}
+                    <th data-sort-ignore="true" class="item">{l s='Postnummer' mod='coolpakkelabel'}</th>
+                    <th data-sort-ignore="true" class="item">{l s='By' mod='coolpakkelabel'}</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr class="item">
+    				<td>{$pa_shipping_cart.number}</td>
+    				<td>{$pa_shipping_cart.company_name}</td>
+    				<td>{$pa_shipping_cart.address}</td>
+                    {if $pa_shipping_cart.type_shipping=='gls'}
+                        <td>{$pa_shipping_cart.address2}</td>
+                    {/if}
+                    <td>{$pa_shipping_cart.zipcode}</td>
+                    <td>{$pa_shipping_cart.city}</td>
+    			</tr>
+    		</tbody>
+    	</table>
+    {/if}
+    {* End - By CoolTronic.dk - Cool Pakkelabel *}
 </div>
